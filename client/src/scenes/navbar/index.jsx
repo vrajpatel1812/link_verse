@@ -1,37 +1,37 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import {
-  FormControl,
+  Box,
   IconButton,
-  Input,
   InputBase,
-  Menu,
-  MenuItem,
-  Select,
   Typography,
+  Select,
+  MenuItem,
+  FormControl,
+  useTheme,
   useMediaQuery,
+  Input,
 } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import FlexBetween from "../../component/FlexBetween";
 import {
+  Search,
+  Message,
   DarkMode,
   LightMode,
-  Message,
   Notifications,
   Help,
+  Menu,
   Close,
-  Search,
 } from "@mui/icons-material";
-import { setLogout, setMode } from "../../states";
-import { Box } from "@mui/system";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setMode, setLogout } from "../../states";
+import { useNavigate } from "react-router-dom";
+import FlexBetween from "../../component/FlexBetween";
 
 const NavBar = () => {
   const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
-  const isNoneMobileScreens = useMediaQuery("(min-width:1000px)");
+  const isNoneMobileScreens = useMediaQuery("(min-width: 1000px)");
 
   const theme = useTheme();
   const neutralLight = theme.palette.neutral.light;
@@ -43,7 +43,7 @@ const NavBar = () => {
   const fullName = `${user.firstName} ${user.lastName}`;
 
   return (
-    <FlexBetween sx={{ padding: "1rem 6%", background: "white" }}>
+    <FlexBetween sx={{ padding: "1rem 6%", background: alt }}>
       <FlexBetween sx={{ gap: "1.75rem" }}>
         <Typography
           fontWeight="bold"
@@ -66,7 +66,7 @@ const NavBar = () => {
               borderRadius: "9px",
               gap: "3rem",
               padding: "0.1rem 1.5rem",
-              background: "#ded5d5",
+              background: neutralLight,
               width: "300px",
             }}
           >
@@ -118,9 +118,9 @@ const NavBar = () => {
         </FlexBetween>
       ) : (
         <IconButton
-          onClick={() => setIsMobileMenuToggled(!setIsMobileMenuToggled)}
+          onClick={() => setIsMobileMenuToggled(!isMobileMenuToggled)}
         >
-          <Menu sx={{ fontSize: "25px" }} />
+          <Menu />
         </IconButton>
       )}
 
@@ -134,7 +134,8 @@ const NavBar = () => {
           zIndex="10"
           maxWidth="500px"
           minWidth="300px"
-          backgroundColor="black"
+          color="black"
+          backgroundColor={background}
         >
           {/* CLOSE ICON */}
           <Box display="flex" justifyContent="flex-end" p="1rem">
