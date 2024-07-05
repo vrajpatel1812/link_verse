@@ -10,7 +10,6 @@ export const register = async (req, res) => {
       lastName,
       email,
       password,
-      picturePath,
       friends,
       location,
       occupation,
@@ -39,7 +38,6 @@ export const register = async (req, res) => {
       lastName,
       email: emailLowercase,
       password: hashedPassword,
-      picturePath,
       friends,
       location,
       occupation,
@@ -48,7 +46,17 @@ export const register = async (req, res) => {
     });
 
     const { id } = newUser;
-    res.status(201).json({ result: { id, firstName, lastName, email } });
+    res.status(201).json({
+      result: {
+        firstName,
+        lastName,
+        email,
+        password,
+        friends,
+        location,
+        occupation,
+      },
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
     console.log(error);
