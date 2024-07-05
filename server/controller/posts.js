@@ -1,7 +1,7 @@
 import Post from "../models/Posts.js";
 import User from "../models/User.js";
 
-//CREATE
+/* CREATE */
 export const createPost = async (req, res) => {
   try {
     const { userId, description, picturePath } = req.body;
@@ -17,37 +17,36 @@ export const createPost = async (req, res) => {
       likes: {},
       comments: [],
     });
-
     await newPost.save();
 
     const post = await Post.find();
     res.status(201).json(post);
-  } catch (error) {
-    res.status(409).json({ message: error.message });
+  } catch (err) {
+    res.status(409).json({ message: err.message });
   }
 };
 
-//READ
+/* READ */
 export const getFeedPosts = async (req, res) => {
   try {
     const post = await Post.find();
     res.status(200).json(post);
-  } catch (error) {
-    res.status(404).json({ message: error.message });
+  } catch (err) {
+    res.status(404).json({ message: err.message });
   }
 };
 
 export const getUserPosts = async (req, res) => {
   try {
     const { userId } = req.params;
-    const post = await Post.find();
+    const post = await Post.find({ userId });
     res.status(200).json(post);
-  } catch (error) {
-    res.status(404).json({ message: error.message });
+  } catch (err) {
+    res.status(404).json({ message: err.message });
   }
 };
 
-//UDATE
+/* UPDATE */
 export const likePost = async (req, res) => {
   try {
     const { id } = req.params;
@@ -58,7 +57,7 @@ export const likePost = async (req, res) => {
     if (isLiked) {
       post.likes.delete(userId);
     } else {
-      post.like.set(userId, true);
+      post.likes.set(userId, true);
     }
 
     const updatedPost = await Post.findByIdAndUpdate(
@@ -68,7 +67,7 @@ export const likePost = async (req, res) => {
     );
 
     res.status(200).json(updatedPost);
-  } catch (error) {
-    res.status(404).json({ message: error.message });
+  } catch (err) {
+    res.status(404).json({ message: err.message });
   }
 };

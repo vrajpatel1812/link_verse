@@ -26,10 +26,11 @@ const UserWidget = ({ userId, picturePath }) => {
   const getUser = async () => {
     const response = await fetch(`http://localhost:3001/users/${userId}`, {
       method: "GET",
-      headers: { Authorization: `bearer ${token}` },
+      headers: { Authorization: `Bearer ${token}` },
     });
 
     const data = await response.json();
+    console.log(data)
     setUser(data);
   };
 
@@ -51,7 +52,6 @@ const UserWidget = ({ userId, picturePath }) => {
     impressions,
     friends,
   } = user;
-  console.log(user);
 
   return (
     <WidgetWrapper>
