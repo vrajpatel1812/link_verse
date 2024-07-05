@@ -10,17 +10,17 @@ import {
   Select,
   Typography,
   useMediaQuery,
-  useTheme,
 } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import FlexBetween from "../../component/FlexBetween";
 import {
   DarkMode,
   LightMode,
   Message,
-  Search,
   Notifications,
   Help,
   Close,
+  Search,
 } from "@mui/icons-material";
 import { setLogout, setMode } from "../../states";
 import { Box } from "@mui/system";
@@ -38,13 +38,13 @@ const NavBar = () => {
   const dark = theme.palette.neutral.dark;
   const background = theme.palette.background.default;
   const primaryLight = theme.palette.primary.light;
-  const alt = theme.palette.background.alt;
+  const alt = theme.palette.background.paper;
 
   const fullName = `${user.firstName} ${user.lastName}`;
 
   return (
-    <FlexBetween padding="1rem 6%" background={alt}>
-      <FlexBetween gap="1.75rem">
+    <FlexBetween sx={{ padding: "1rem 6%", background: "white" }}>
+      <FlexBetween sx={{ gap: "1.75rem" }}>
         <Typography
           fontWeight="bold"
           fontSize="clamp(1rem, 2rem, 2.25rem)"
@@ -62,23 +62,25 @@ const NavBar = () => {
 
         {isNoneMobileScreens && (
           <FlexBetween
-            background={neutralLight}
-            borderRadius="9px"
-            gap="3rem"
-            padding="0.1rem 1.5rem"
+            sx={{
+              borderRadius: "9px",
+              gap: "3rem",
+              padding: "0.1rem 1.5rem",
+              background: "#ded5d5",
+              width: "300px",
+            }}
           >
-            <InputBase placeholder="Search...">
-              <IconButton>
-                <Search />
-              </IconButton>
-            </InputBase>
+            <InputBase placeholder="Search..." />
+            <IconButton sx={{ color: "black", fontSize: "25px" }}>
+              <Search />
+            </IconButton>
           </FlexBetween>
         )}
       </FlexBetween>
 
       {/* DESKTOP NAV */}
       {isNoneMobileScreens ? (
-        <FlexBetween gap="2rem">
+        <FlexBetween sx={{ gap: "2rem" }}>
           <IconButton onClick={() => dispatch(setMode())}>
             {theme.palette.mode === "dark" ? (
               <DarkMode sx={{ fontSize: "25px" }} />
@@ -118,7 +120,7 @@ const NavBar = () => {
         <IconButton
           onClick={() => setIsMobileMenuToggled(!setIsMobileMenuToggled)}
         >
-          <Menu />
+          <Menu sx={{ fontSize: "25px" }} />
         </IconButton>
       )}
 
@@ -132,7 +134,7 @@ const NavBar = () => {
           zIndex="10"
           maxWidth="500px"
           minWidth="300px"
-          backgroundColor={background}
+          backgroundColor="black"
         >
           {/* CLOSE ICON */}
           <Box display="flex" justifyContent="flex-end" p="1rem">
@@ -145,11 +147,13 @@ const NavBar = () => {
 
           {/* MENU ITEMS  */}
           <FlexBetween
-            display="flex"
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="center"
-            gap="3rem"
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "3rem",
+            }}
           >
             <IconButton
               onClick={() => dispatch(setMode())}
