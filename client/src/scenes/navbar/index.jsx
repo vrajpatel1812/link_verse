@@ -133,14 +133,13 @@ const NavBar = () => {
           height="100%"
           zIndex="10"
           maxWidth="500px"
-          minWidth="300px"
-          color="black"
+          minWidth="180px"
           backgroundColor={background}
         >
           {/* CLOSE ICON */}
           <Box display="flex" justifyContent="flex-end" p="1rem">
             <IconButton
-              onClick={() => setIsMobileMenuToggled(!setIsMobileMenuToggled)}
+              onClick={() => setIsMobileMenuToggled(!isMobileMenuToggled)}
             >
               <Close />
             </IconButton>
