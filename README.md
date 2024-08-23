@@ -46,7 +46,7 @@ To set up the Linkverse application locally, follow these steps:
 First, clone the repository from GitHub to your local machine:
 
 ```bash
-git clone https://github.com/vrajpatel1812/linkverse.git
+git clone https://github.com/vrajpatel1812/link_verse.git
 cd linkverse
 ```
 
