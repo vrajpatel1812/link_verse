@@ -34,7 +34,7 @@ Linkverse is a social media platform designed to allow users to connect, share, 
 Ensure you have the following software installed on your machine:
 
 - **Node.js** (v14.x or higher) - [Download Node.js](https://nodejs.org/)
-- **MongoDB** (v4.x or higher) - [Download MongoDB](https://www.mongodb.com/try/download/community)
+- **MongoDB** (v4.x or higher) - Using MongoDB Atlas
 - **npm** (v6.x or higher) - Installed with Node.js
 
 ## Installation
