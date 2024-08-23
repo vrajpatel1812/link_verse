@@ -1,13 +1,12 @@
 # Linkverse
 
-Linkverse is a social media platform designed to allow users to connect, share, and interact with others. It provides a comprehensive set of features that make social networking easy, fun, and engaging. The platform offers a user-friendly interface with various functionalities like posting content, liking and commenting, and direct messaging.
+Linkverse is a social media platform designed to allow users to connect, share, and interact with others. It provides a comprehensive set of features that make social networking easy, fun, and engaging. The platform offers a user-friendly interface with various functionalities like posting content, liking and commenting.
 
 ## Table of Contents
 - [Features](#features)
 - [Technology Stack](#technology-stack)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
-- [Configuration](#configuration)
 - [Running the Application](#running-the-application)
 - [Screenshots](#screenshots)
 - [Usage](#usage)
